@@ -1,0 +1,219 @@
+//设计图基准
+@rootFontSize:75;
+
+
+
+//字体兼容
+.font-dpr (@fontSize){
+  font-size: @fontSize;
+  [data-dpr="2"] & {
+    font-size: @fontSize * 2;
+  }
+  [data-dpr="3"] & {
+    font-size: @fontSize * 3;
+  }
+}
+
+//border-top
+.border-top(@position,@color){
+  @media(-webkit-min-device-pixel-ratio:1),(min-device-pixel-ratio:1),(-ms-min-device-pixel-ratio:1),(-o-min-device-pixel-ratio:1),(-moz-min-device-pixel-ratio:1){
+    &:after{
+      content: '';
+      width: 100%;
+      position:absolute;
+      left:0;
+      top:0;
+      pointer-events: none; /* 防止点击触发 */
+      border-bottom:1px solid @color;
+      -webkit-transform:scale(1);
+      -webkit-transform-origin: 0 0;
+      transform:scale(1);
+      transform-origin: 0 0;
+
+    }
+  }
+  @media(-webkit-min-device-pixel-ratio:1.5),(min-device-pixel-ratio:1.5),(-ms-min-device-pixel-ratio:1.5),(-o-min-device-pixel-ratio:1.5),(-moz-min-device-pixel-ratio:1.5){
+    &:after{
+      content: '';
+      width: 150%;
+      position:absolute;
+      left:0;
+      top:0;
+      pointer-events: none; /* 防止点击触发 */
+      border-bottom:1px solid @color;
+      -webkit-transform:scale(0.7);
+      -webkit-transform-origin: 0 0;
+      transform:scale(0.7);
+      transform-origin: 0 0;
+    }
+  }
+  @media(-webkit-min-device-pixel-ratio:2),(min-device-pixel-ratio:2),(-ms-min-device-pixel-ratio:2),(-o-min-device-pixel-ratio:2),(-moz-min-device-pixel-ratio:2){
+    &:after{
+      content: '';
+      width: 200%;
+      position:absolute;
+      left:0;
+      top:0;
+      pointer-events: none; /* 防止点击触发 */
+      border-bottom:1px solid @color;
+      -webkit-transform:scale(0.5);
+      -webkit-transform-origin: 0 0;
+      transform:scale(0.5);
+      transform-origin: 0 0;
+    }
+  }
+  @media(-webkit-min-device-pixel-ratio:3),(min-device-pixel-ratio:3),(-ms-min-device-pixel-ratio:3),(-o-min-device-pixel-ratio:3),(-moz-min-device-pixel-ratio:3) {
+    &:after{
+      content: '';
+      width: 300%;
+      position:absolute;
+      left:0;
+      top:0;
+      pointer-events: none; /* 防止点击触发 */
+      border-bottom:1px solid @color;
+      -webkit-transform:scale(0.33);
+      -webkit-transform-origin: 0 0;
+      transform:scale(0.33);
+      transform-origin: 0 0;
+    }
+  }
+}
+
+//border-bottom
+.border-bottom(@color){
+  @media(-webkit-min-device-pixel-ratio:1),(min-device-pixel-ratio:1),(-ms-min-device-pixel-ratio:1),(-o-min-device-pixel-ratio:1),(-moz-min-device-pixel-ratio:1){
+    &:after{
+      content: '';
+      width: 100%;
+      position:absolute;
+      left:0;
+      bottom:0;
+      pointer-events: none; /* 防止点击触发 */
+      border-bottom:1px solid @color;
+      -webkit-transform:scale(1);
+      -webkit-transform-origin: 0 0;
+      transform:scale(1);
+      transform-origin: 0 0;
+    }
+  }
+  @media(-webkit-min-device-pixel-ratio:1.5),(min-device-pixel-ratio:1.5),(-ms-min-device-pixel-ratio:1.5),(-o-min-device-pixel-ratio:1.5),(-moz-min-device-pixel-ratio:1.5){
+    &:after{
+      content: '';
+      width: 150%;
+      position:absolute;
+      left:0;
+      bottom:0;
+      pointer-events: none; /* 防止点击触发 */
+      border-bottom:1px solid @color;
+      -webkit-transform:scale(0.7);
+      -webkit-transform-origin: 0 0;
+      transform:scale(0.7);
+      transform-origin: 0 0;
+    }
+  }
+  @media(-webkit-min-device-pixel-ratio:2),(min-device-pixel-ratio:2),(-ms-min-device-pixel-ratio:2),(-o-min-device-pixel-ratio:2),(-moz-min-device-pixel-ratio:2){
+    &:after{
+      content: '';
+      width: 200%;
+      position:absolute;
+      left:0;
+      bottom:0;
+      pointer-events: none; /* 防止点击触发 */
+      border-bottom:1px solid @color;
+      -webkit-transform:scale(0.5);
+      -webkit-transform-origin: 0 0;
+      transform:scale(0.5);
+      transform-origin: 0 0;
+    }
+  }
+  @media(-webkit-min-device-pixel-ratio:3),(min-device-pixel-ratio:3),(-ms-min-device-pixel-ratio:3),(-o-min-device-pixel-ratio:3),(-moz-min-device-pixel-ratio:3) {
+    &:after{
+      content: '';
+      width: 300%;
+      position:absolute;
+      left:0;
+      bottom:0;
+      pointer-events: none; /* 防止点击触发 */
+      border:1px solid @color;
+      -webkit-transform:scale(0.33);
+      -webkit-transform-origin: 0 0;
+      transform:scale(0.33);
+      transform-origin: 0 0;
+    }
+  }
+}
+//border
+.border (@color) {
+  @media(-webkit-min-device-pixel-ratio:1),(min-device-pixel-ratio:1),(-ms-min-device-pixel-ratio:1),(-o-min-device-pixel-ratio:1),(-moz-min-device-pixel-ratio:1){
+    &:after{
+      content: "";
+      pointer-events: none; /* 防止点击触发 */
+      box-sizing: border-box;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      border:1px solid @color;
+      -webkit-transform:scale(1);
+      -webkit-transform-origin: 0 0;
+      transform:scale(1);
+      transform-origin: 0 0;
+    }
+  }
+  @media(-webkit-min-device-pixel-ratio:1.5),(min-device-pixel-ratio:1.5),(-ms-min-device-pixel-ratio:1.5),(-o-min-device-pixel-ratio:1.5),(-moz-min-device-pixel-ratio:1.5){
+    &:after{
+      content: "";
+      pointer-events: none; /* 防止点击触发 */
+      box-sizing: border-box;
+      position: absolute;
+      width: 150%;
+      height: 150%;
+      left: 0;
+      top: 0;
+      border-radius: 8px;
+      border:1px solid @color;
+      -webkit-transform:scale(0.7);
+      -webkit-transform-origin: 0 0;
+      transform:scale(0.7);
+      transform-origin: 0 0;
+    }
+  }
+  @media(-webkit-min-device-pixel-ratio:2),(min-device-pixel-ratio:2),(-ms-min-device-pixel-ratio:2),(-o-min-device-pixel-ratio:2),(-moz-min-device-pixel-ratio:2){
+    &:after{
+      content: "";
+      pointer-events: none; /* 防止点击触发 */
+      box-sizing: border-box;
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      left: 0;
+      top: 0;
+      border-radius: 8px;
+      border:1px solid @color;
+      -webkit-transform:scale(0.5);
+      -webkit-transform-origin: 0 0;
+      transform:scale(0.5);
+      transform-origin: 0 0;
+    }
+  }
+  @media(-webkit-min-device-pixel-ratio:3),(min-device-pixel-ratio:3),(-ms-min-device-pixel-ratio:3),(-o-min-device-pixel-ratio:3),(-moz-min-device-pixel-ratio:3){
+    &:after{
+      content: "";
+      pointer-events: none; /* 防止点击触发 */
+      box-sizing: border-box;
+      position: absolute;
+      width: 300%;
+      height: 300%;
+      left: 0;
+      top: 0;
+      border-radius: 8px;
+      border:1px solid @color;
+      -webkit-transform:scale(0.33);
+      -webkit-transform-origin: 0 0;
+      transform:scale(0.33);
+      transform-origin: 0 0;
+    }
+  }
+}
+

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>上传文件</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        input.file
+        {
+            position: relative;
+            -moz-opacity:0 ;
+            filter:alpha(opacity: 0);
+            opacity: 0;
+            z-index: 2;
+        }
+        .wrapper{
+            color: #fff;
+            background-color: #31b0d5;
+            border-color: #269abc;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+<div id="app" v-cloak>
+    <h4>上传视频demo</h4>
+    <div>
+        <span type="primary" class="wrapper">
+            <label class="btn" for="fileUpload">上传视频demo</label>
+        </span>
+        <input type="file" accept="video/*" id="fileUpload" style="position:absolute; clip:rect(0 0 0 0);"  @change="uploadVideo($event)">
+    </div>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+
+        },
+        methods: {
+            uploadVideo(e) {
+                //e.target.value文件名
+                var file = e.target.files[0];
+                var formdata = new FormData();
+                formdata.append('fileStream', file);
+                console.log('正在上传视频...')
+                this.doUpload(formdata);
+            },
+            doUpload(formdata) {
+                axios.post('/teacher/doUpload', formdata).then(res => {
+                    if (res.data.success) {
+                        console.log('上传成功');
+                    } else {
+                        console.log('上传失败');
+                    }
+                }).catch(err => {
+                    console.log(err);
+                })
+            }
+        }
+    });
+</script>
+</body>
+</html>
